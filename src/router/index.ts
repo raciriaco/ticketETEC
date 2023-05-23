@@ -1,32 +1,55 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import TabsPage from '../views/TabsPage.vue'
+import TabsPage from '../views/atendente/TabsPage.vue'
+import TabsPageCliente from '../views/cliente/TabsPageCliente.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/tab1'
+    redirect: 'atendente/tab1'
   },
   {
-    path: '/tabs/',
+    path: '/atendente/',
     component: TabsPage,
     children: [
       {
-        path: '',
-        redirect: '/tabs/tab1'
+        path: '/atendente',
+        redirect: 'atendente/tab1'
       },
       {
         path: 'tab1',
-        component: () => import('@/views/Tab1Page.vue')
+        component: () => import('@/views/atendente/Tab1Page.vue')
       },
       {
         path: 'tab2',
-        component: () => import('@/views/Tab2Page.vue')
+        component: () => import('@/views/atendente/Tab2Page.vue')
       },
       {
         path: 'tab3',
-        component: () => import('@/views/Tab3Page.vue')
+        component: () => import('@/views/atendente/Tab3Page.vue')
       }
+    ]
+  },
+  {
+    path: '/cliente/',
+    component: TabsPageCliente,
+    children: [
+      {
+        path: '/cliente',
+        redirect: 'cliente/tab1'
+      },
+      {
+        path: 'tab1',
+        component: () => import('@/views/cliente/Tab1PageCliente.vue')
+      },
+      {
+        path: 'tab2',
+        component: () => import('@/views/cliente/Tab2PageCliente.vue')
+      },
+      {
+        path: 'tab3',
+        component: () => import('@/views/cliente/Tab3PageCliente.vue')
+      },
     ]
   }
 ]
